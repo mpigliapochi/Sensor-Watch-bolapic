@@ -27,16 +27,34 @@
 
 #include "movement_faces.h"
 
+
+Home
+Download
+stdout
+
+---- movement_config.h
+#ifndef MOVEMENT_CONFIG_H_
+#define MOVEMENT_CONFIG_H_
+
+#include "movement_faces.h"
+
 const watch_face_t watch_faces[] = {
-    simple_clock_face,
-    world_clock_face,
-    sunrise_sunset_face,
-    moon_phase_face,
-    stopwatch_face,
-    preferences_face,
-    set_time_face,
-    thermistor_readout_face,
-    voltage_face
+  simple_clock_face,
+  world_clock_face,
+  timer_face,
+  stopwatch_face,
+  alarm_face,
+  sunrise_sunset_face,
+  moon_phase_face,
+  thermistor_logging_face,
+  probability_face,
+  wyoscan_face,
+  set_time_face,
+  finetune_face,
+  nanosec_face,
+  preferences_face,
+  save_load_face,
+
 };
 
 #define MOVEMENT_NUM_FACES (sizeof(watch_faces) / sizeof(watch_face_t))
@@ -55,11 +73,11 @@ const watch_face_t watch_faces[] = {
 /* Determines the intensity of the led colors
  * Set a hex value 0-15 with 0x0 being off and 0xF being max intensity
  */
-#define MOVEMENT_DEFAULT_GREEN_COLOR 0xF
-#define MOVEMENT_DEFAULT_RED_COLOR 0x0
+#define MOVEMENT_DEFAULT_GREEN_COLOR 0xA
+#define MOVEMENT_DEFAULT_RED_COLOR 0x2
 
 /* Set to true for 24h mode or false for 12h mode */
-#define MOVEMENT_DEFAULT_24H_MODE false
+#define MOVEMENT_DEFAULT_24H_MODE true
 
 /* Enable or disable the sound on mode button press */
 #define MOVEMENT_DEFAULT_BUTTON_SOUND true
@@ -71,7 +89,7 @@ const watch_face_t watch_faces[] = {
  * 2: 5 minutes
  * 3: 30 minutes
  */
-#define MOVEMENT_DEFAULT_TIMEOUT_INTERVAL 0
+#define MOVEMENT_DEFAULT_TIMEOUT_INTERVAL 3
 
 /* Set the timeout before switching to low energy mode
  * Valid values are:
