@@ -27,17 +27,6 @@
 
 #include "movement_faces.h"
 
-
-Home
-Download
-stdout
-
----- movement_config.h
-#ifndef MOVEMENT_CONFIG_H_
-#define MOVEMENT_CONFIG_H_
-
-#include "movement_faces.h"
-
 const watch_face_t watch_faces[] = {
   simple_clock_face,
   world_clock_face,
