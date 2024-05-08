@@ -32,6 +32,18 @@ int8_t signal_tune[] = {
     BUZZER_NOTE_C8, 5,
     0
 };
+
+int8_t animation_tune[] = {
+    BUZZER_NOTE_G5, 8,
+    BUZZER_NOTE_F5SHARP_G5FLAT, 8,
+    BUZZER_NOTE_D5SHARP_E5FLAT, 8,
+    BUZZER_NOTE_A4, 8,
+    BUZZER_NOTE_G4SHARP_A4FLAT, 8,
+    BUZZER_NOTE_E5, 8,
+    BUZZER_NOTE_G5SHARP_A5FLAT, 8,
+    BUZZER_NOTE_C6, 20,
+    0
+};
 #endif // SIGNAL_TUNE_DEFAULT
 
 #ifdef SIGNAL_TUNE_ZELDA_SECRET
