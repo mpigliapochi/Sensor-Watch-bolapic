@@ -358,12 +358,12 @@ void movement_secret_animation(void) {
     watch_set_indicator(WATCH_INDICATOR_SIGNAL);
     watch_set_indicator(WATCH_INDICATOR_LAP);
     watch_display_string("Bo1CC1aO", 0);
-    watch_set_pixel(0,2)
-    watch_set_pixel(0,3)
-    watch_set_pixel(0,6)
-    watch_set_pixel(1,6)
-    watch_set_pixel(2,3)
-    watch_set_pixel(1,4)
+    watch_set_pixel(0,2);
+    watch_set_pixel(0,3);
+    watch_set_pixel(0,6);
+    watch_set_pixel(1,6);
+    watch_set_pixel(2,3);
+    watch_set_pixel(1,4);
     movement_state.is_buzzing = true;
     watch_buzzer_play_sequence(animation_tune, maybe_disable_buzzer);
 }
