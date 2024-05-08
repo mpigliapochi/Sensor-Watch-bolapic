@@ -259,6 +259,7 @@ bool movement_default_loop_handler(movement_event_t event, movement_settings_t *
             break;
         case EVENT_MODE_LONG_PRESS:
             if (MOVEMENT_SECONDARY_FACE_INDEX && movement_state.current_face_idx == 0) {
+                movement_secret_animation(); //added
                 movement_move_to_face(MOVEMENT_SECONDARY_FACE_INDEX);
             } else {
                 movement_move_to_face(0);
@@ -345,6 +346,26 @@ void movement_play_signal(void) {
         movement_state.needs_wake = true;
         movement_state.le_mode_ticks = 1;
     }
+}
+
+void movement_secret_animation(void) {
+    void *maybe_disable_buzzer = end_buzzing_and_disable_buzzer;
+    if (watch_is_buzzer_or_led_enabled()) {
+        maybe_disable_buzzer = end_buzzing;
+    } else {
+        watch_enable_buzzer();
+    }
+    watch_set_indicator(WATCH_INDICATOR_SIGNAL);
+    watch_set_indicator(WATCH_INDICATOR_LAP);
+    watch_display_string("Bo1CC1aO", 0);
+    watch_set_pixel(0,2)
+    watch_set_pixel(0,3)
+    watch_set_pixel(0,6)
+    watch_set_pixel(1,6)
+    watch_set_pixel(2,3)
+    watch_set_pixel(1,4)
+    movement_state.is_buzzing = true;
+    watch_buzzer_play_sequence(animation_tune, maybe_disable_buzzer);
 }
 
 void movement_play_alarm(void) {
