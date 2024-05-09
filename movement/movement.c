@@ -349,12 +349,15 @@ void movement_play_signal(void) {
 }
 
 void movement_secret_animation(void) {
+    uint8_t secs_elapsed = 0;
     void *maybe_disable_buzzer = end_buzzing_and_disable_buzzer;
     if (watch_is_buzzer_or_led_enabled()) {
         maybe_disable_buzzer = end_buzzing;
     } else {
         watch_enable_buzzer();
     }
+    movement_state.is_buzzing = true;
+    watch_buzzer_play_sequence(animation_tune, maybe_disable_buzzer);
     watch_set_indicator(WATCH_INDICATOR_SIGNAL);
     watch_set_indicator(WATCH_INDICATOR_LAP);
     watch_display_string("Bo1CC1aO", 0);
@@ -364,8 +367,20 @@ void movement_secret_animation(void) {
     watch_set_pixel(1,6);
     watch_set_pixel(2,3);
     watch_set_pixel(1,4);
-    movement_state.is_buzzing = true;
-    watch_buzzer_play_sequence(animation_tune, maybe_disable_buzzer);
+    while (secs_elapsed < 3) {
+        switch (event.event_type) {
+             case EVENT_TICK:
+                secs_elapsed++;
+                if (secs_elapsed == 1) {
+                    watch_clear_pixel(1,4);
+                    watch_set_pixel(1,5);
+                } else if (secs_elapsed == 2) {
+                    watch_clear_pixel(1,5);
+                    watch_set_pixel(1,4);
+                }
+                break;
+        }
+    }
 }
 
 void movement_play_alarm(void) {
