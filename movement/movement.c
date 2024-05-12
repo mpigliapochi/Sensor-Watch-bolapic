@@ -259,7 +259,9 @@ bool movement_default_loop_handler(movement_event_t event, movement_settings_t *
             break;
         case EVENT_MODE_LONG_PRESS:
             if (MOVEMENT_SECONDARY_FACE_INDEX && movement_state.current_face_idx == 0) {
-                movement_secret_animation();
+                if (movement_state.settings.bit.button_should_sound) {
+		    movement_secret_animation();
+		}
                 movement_move_to_face(MOVEMENT_SECONDARY_FACE_INDEX);
             } else {
                 movement_move_to_face(0);
