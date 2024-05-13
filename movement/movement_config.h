@@ -70,7 +70,7 @@ const watch_face_t watch_faces[] = {
 #define MOVEMENT_DEFAULT_24H_MODE true
 
 /* Enable or disable the sound on mode button press */
-#define MOVEMENT_DEFAULT_BUTTON_SOUND false
+#define MOVEMENT_DEFAULT_BUTTON_SOUND true
 
 /* Set the timeout before switching back to the main watch face
  * Valid values are:

@@ -260,7 +260,7 @@ bool movement_default_loop_handler(movement_event_t event, movement_settings_t *
         case EVENT_MODE_LONG_PRESS:
             if (MOVEMENT_SECONDARY_FACE_INDEX && movement_state.current_face_idx == 0) {
                 if (movement_state.settings.bit.button_should_sound) {
-		    movement_secret_animation();
+		    //movement_secret_animation();
 		}
                 movement_move_to_face(MOVEMENT_SECONDARY_FACE_INDEX);
             } else {
@@ -350,8 +350,7 @@ void movement_play_signal(void) {
     }
 }
 
-void movement_secret_animation(void) {
-    uint8_t secs_elapsed = 0;
+void movement_play_secret_tune(void) {
     void *maybe_disable_buzzer = end_buzzing_and_disable_buzzer;
     if (watch_is_buzzer_or_led_enabled()) {
         maybe_disable_buzzer = end_buzzing;
@@ -360,29 +359,6 @@ void movement_secret_animation(void) {
     }
     movement_state.is_buzzing = true;
     watch_buzzer_play_sequence(animation_tune, maybe_disable_buzzer);
-    watch_set_indicator(WATCH_INDICATOR_SIGNAL);
-    watch_set_indicator(WATCH_INDICATOR_LAP);
-    watch_display_string("Bo1CC1aO", 0);
-    watch_set_pixel(0,2);
-    watch_set_pixel(0,3);
-    watch_set_pixel(0,6);
-    watch_set_pixel(1,6);
-    watch_set_pixel(2,3);
-    watch_set_pixel(1,4);
-    /*while (secs_elapsed < 3) {
-        switch (event.event_type) {
-             case EVENT_TICK:
-                secs_elapsed++;
-                if (secs_elapsed == 1) {
-                    watch_clear_pixel(1,4);
-                    watch_set_pixel(1,5);
-                } else if (secs_elapsed == 2) {
-                    watch_clear_pixel(1,5);
-                    watch_set_pixel(1,4);
-                }
-                break;
-        }
-    }*/
 }
 
 void movement_play_alarm(void) {
