@@ -72,6 +72,9 @@ const watch_face_t watch_faces[] = {
 /* Enable or disable the sound on mode button press */
 #define MOVEMENT_DEFAULT_BUTTON_SOUND true
 
+/* DEFINED AS A GLOBAL SETTING */
+#define MOVEMENT_DEFAULT_SIGNAL_FLAG true
+
 /* Set the timeout before switching back to the main watch face
  * Valid values are:
  * 0: 60 seconds
@@ -79,7 +82,7 @@ const watch_face_t watch_faces[] = {
  * 2: 5 minutes
  * 3: 30 minutes
  */
-#define MOVEMENT_DEFAULT_TIMEOUT_INTERVAL 3
+#define MOVEMENT_DEFAULT_TIMEOUT_INTERVAL 1
 
 /* Set the timeout before switching to low energy mode
  * Valid values are:
@@ -92,7 +95,7 @@ const watch_face_t watch_faces[] = {
  * 6: 2 days
  * 7: 7 days
  */
-#define MOVEMENT_DEFAULT_LOW_ENERGY_INTERVAL 1
+#define MOVEMENT_DEFAULT_LOW_ENERGY_INTERVAL 3
 
 /* Set the led duration
  * Valid values are:

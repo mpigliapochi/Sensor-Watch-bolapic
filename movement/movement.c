@@ -80,6 +80,11 @@
 #define MOVEMENT_DEFAULT_BUTTON_SOUND true
 #endif
 
+//DEFAULT TO SIGNAL FLAG TURNED ON
+#ifndef MOVEMENT_DEFAULT_SIGNAL_FLAG
+#define MOVEMENT_DEFAULT_SIGNAL_FLAG true
+#endif
+
 // Default to switch back to main watch face after 60 seconds
 #ifndef MOVEMENT_DEFAULT_TIMEOUT_INTERVAL
 #define MOVEMENT_DEFAULT_TIMEOUT_INTERVAL 0
@@ -259,9 +264,6 @@ bool movement_default_loop_handler(movement_event_t event, movement_settings_t *
             break;
         case EVENT_MODE_LONG_PRESS:
             if (MOVEMENT_SECONDARY_FACE_INDEX && movement_state.current_face_idx == 0) {
-                if (movement_state.settings.bit.button_should_sound) {
-		    //movement_secret_animation();
-		}
                 movement_move_to_face(MOVEMENT_SECONDARY_FACE_INDEX);
             } else {
                 movement_move_to_face(0);
@@ -398,6 +400,7 @@ void app_init(void) {
     movement_state.settings.bit.to_interval = MOVEMENT_DEFAULT_TIMEOUT_INTERVAL;
     movement_state.settings.bit.le_interval = MOVEMENT_DEFAULT_LOW_ENERGY_INTERVAL;
     movement_state.settings.bit.led_duration = MOVEMENT_DEFAULT_LED_DURATION;
+    movement_state.settings.bit.signal_enabled = MOVEMENT_DEFAULT_SIGNAL_FLAG; 
     movement_state.light_ticks = -1;
     movement_state.alarm_ticks = -1;
     movement_state.next_available_backup_register = 4;

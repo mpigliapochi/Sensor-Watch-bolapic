@@ -41,7 +41,7 @@ void simple_clock_face_setup(movement_settings_t *settings, uint8_t watch_face_i
     if (*context_ptr == NULL) {
         *context_ptr = malloc(sizeof(simple_clock_state_t));
         simple_clock_state_t *state = (simple_clock_state_t *)*context_ptr;
-        state->signal_enabled = false;
+        state->signal_enabled = settings->bit.signal_enabled;
         state->watch_face_index = watch_face_index;
     }
 }
@@ -130,6 +130,7 @@ bool simple_clock_face_loop(movement_event_t event, movement_settings_t *setting
             break;
         case EVENT_ALARM_LONG_PRESS:
             state->signal_enabled = !state->signal_enabled;
+	    settings->bit.signal_enabled = !settings->bit.signal_enabled;
             if (state->signal_enabled) watch_set_indicator(WATCH_INDICATOR_BELL);
             else watch_clear_indicator(WATCH_INDICATOR_BELL);
             break;
